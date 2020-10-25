@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		33C5EED125461433001FA92A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5EED025461433001FA92A /* Preview Assets.xcassets */; };
 		33C5EEDC25461434001FA92A /* RSSsssssTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEDB25461434001FA92A /* RSSsssssTests.swift */; };
 		33C5EEE725461434001FA92A /* RSSsssssUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEE625461434001FA92A /* RSSsssssUITests.swift */; };
+		33C5EEF925461EED001FA92A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 33C5EEF825461EED001FA92A /* SwiftSoup */; };
+		33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEFD25461F01001FA92A /* FeedGrabber.swift */; };
+		33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF022546285D001FA92A /* SiteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,8 @@
 		33C5EEE225461434001FA92A /* RSSsssssUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSsssssUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C5EEE625461434001FA92A /* RSSsssssUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSsssssUITests.swift; sourceTree = "<group>"; };
 		33C5EEE825461434001FA92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33C5EEFD25461F01001FA92A /* FeedGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGrabber.swift; sourceTree = "<group>"; };
+		33C5EF022546285D001FA92A /* SiteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33C5EEF925461EED001FA92A /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +103,8 @@
 			children = (
 				33C5EEC925461432001FA92A /* RSSsssssApp.swift */,
 				33C5EECB25461432001FA92A /* ContentView.swift */,
+				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
+				33C5EF022546285D001FA92A /* SiteViewModel.swift */,
 				33C5EECD25461433001FA92A /* Assets.xcassets */,
 				33C5EED225461433001FA92A /* Info.plist */,
 				33C5EECF25461433001FA92A /* Preview Content */,
@@ -146,6 +154,9 @@
 			dependencies = (
 			);
 			name = RSSsssss;
+			packageProductDependencies = (
+				33C5EEF825461EED001FA92A /* SwiftSoup */,
+			);
 			productName = RSSsssss;
 			productReference = 33C5EEC625461432001FA92A /* RSSsssss.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +228,9 @@
 				Base,
 			);
 			mainGroup = 33C5EEBD25461432001FA92A;
+			packageReferences = (
+				33C5EEF725461EEC001FA92A /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 33C5EEC725461432001FA92A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				33C5EECC25461432001FA92A /* ContentView.swift in Sources */,
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,
+				33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33C5EEF725461EEC001FA92A /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		33C5EEF825461EED001FA92A /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33C5EEF725461EEC001FA92A /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 33C5EEBE25461432001FA92A /* Project object */;
 }

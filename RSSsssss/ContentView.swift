@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+
+	@StateObject var siteVM = SiteViewModel(site: URL(string: "https://mikespsyche.com")!)
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+		switch siteVM.state {
+		case .idle:
+			Text("idle")
+		case .loading:
+			Text("loading")
+		case .loaded:
+			List(siteVM.rssLinks, id: \.self) { link in
+				Link("\(link)", destination: link)
+			}
+		case .error(let error):
+			Text("Error: \(error as NSError)")
+		}
+
     }
 }
 
