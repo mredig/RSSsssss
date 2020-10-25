@@ -14,29 +14,39 @@ class SiteViewModel: ObservableObject {
 
 	@Published var state: State = .idle
 
-	let site: URL
-
+	var site: URL? {
+		URL(string: siteInput)
+	}
+	var siteInput: String = "https://" {
+		didSet {
+			updateSite()
+		}
+	}
+	var siteTitle: String {
+		(try? document?.title()) ?? site?.absoluteString ?? ""
+	}
 	var rssLinks: [URL] { getRSSLinks() }
 
 	private var bag: Set<AnyCancellable> = []
 
-	init(site: URL) {
-		self.site = site
+	private func updateSite() {
+		guard let site = site else { return }
+		bag.forEach { $0.cancel() }
 
 		FeedGrabber.getSite(site)
 			.receive(on: RunLoop.main)
 			.sink(
 				receiveCompletion: { completion in
-					if case .failure(let error) = completion {
-						self.state = .error(error)
-					}
+//					if case .failure(let error) = completion {
+//						self.state = .error(error)
+//					}
 				},
 				receiveValue: { document in
 					self.state = .loaded(document)
 				})
 			.store(in: &bag)
 
-		state = .loading
+		state = .loading(site)
 	}
 
 	private func getRSSLinks() -> [URL] {
@@ -49,7 +59,7 @@ class SiteViewModel: ObservableObject {
 
 	enum State {
 		case idle
-		case loading
+		case loading(URL)
 		case loaded(Document)
 		case error(Error)
 	}

@@ -9,23 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
 
-	@StateObject var siteVM = SiteViewModel(site: URL(string: "https://mikespsyche.com")!)
+	@StateObject var siteVM = SiteViewModel()
 
     var body: some View {
+		NavigationView {
+			VStack {
+				TextField("Input a url with an rss feed.", text: $siteVM.siteInput)
+					.padding(8)
+					.background(Color(.secondarySystemBackground))
+					.cornerRadius(8)
+					.padding()
+
+				viewModelView
+
+				Spacer()
+			}
+			.navigationTitle("Add new Feed")
+		}
+    }
+
+	@ViewBuilder private var viewModelView: some View {
 		switch siteVM.state {
 		case .idle:
-			Text("idle")
-		case .loading:
-			Text("loading")
+			Text("Input a url with an rss feed.")
+		case .loading(let site):
+			Text("Loading \(site)")
 		case .loaded:
-			List(siteVM.rssLinks, id: \.self) { link in
-				Link("\(link)", destination: link)
+			List() {
+				if siteVM.rssLinks.isEmpty {
+					Text("\(siteVM.siteTitle) has no detected RSS feeds")
+				} else {
+					ForEach(siteVM.rssLinks, id: \.self) { link in
+						Text("\(link)")
+					}
+				}
 			}
+			.listStyle(GroupedListStyle())
 		case .error(let error):
 			Text("Error: \(error as NSError)")
 		}
-
-    }
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
