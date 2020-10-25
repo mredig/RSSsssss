@@ -15,6 +15,8 @@ struct ContentView: View {
 		NavigationView {
 			VStack {
 				TextField("Input a url with an rss feed.", text: $siteVM.siteInput)
+					.autocapitalization(.none)
+					.disableAutocorrection(true)
 					.padding(8)
 					.background(Color(.secondarySystemBackground))
 					.cornerRadius(8)
@@ -39,8 +41,13 @@ struct ContentView: View {
 				if siteVM.rssLinks.isEmpty {
 					Text("\(siteVM.siteTitle) has no detected RSS feeds")
 				} else {
-					ForEach(siteVM.rssLinks, id: \.self) { link in
-						Text("\(link)")
+					ForEach(siteVM.rssLinks, id: \.link) { link in
+						VStack(alignment: .leading) {
+							Text("\(link.title)")
+							Text("\(link.link.absoluteString)")
+								.font(.caption2)
+								.foregroundColor(Color(.secondaryLabel))
+						}
 					}
 				}
 			}
@@ -53,6 +60,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		Group {
+			ContentView(siteVM: SiteViewModel(siteInput: "https://mikespsyche.com"))
+			ContentView(siteVM: SiteViewModel(siteInput: "https://macrumors.com"))
+			ContentView(siteVM: SiteViewModel(siteInput: "https://mmo-champion.com"))
+		}
     }
 }
