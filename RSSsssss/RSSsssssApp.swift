@@ -11,7 +11,7 @@ import SwiftUI
 struct RSSsssssApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AddFeedView()
         }
     }
 }
