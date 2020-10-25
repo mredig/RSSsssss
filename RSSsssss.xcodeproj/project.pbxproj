@@ -16,6 +16,7 @@
 		33C5EEF925461EED001FA92A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 33C5EEF825461EED001FA92A /* SwiftSoup */; };
 		33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEFD25461F01001FA92A /* FeedGrabber.swift */; };
 		33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF022546285D001FA92A /* SiteViewModel.swift */; };
+		33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF0D25463BF4001FA92A /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		33C5EEE825461434001FA92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33C5EEFD25461F01001FA92A /* FeedGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGrabber.swift; sourceTree = "<group>"; };
 		33C5EF022546285D001FA92A /* SiteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteViewModel.swift; sourceTree = "<group>"; };
+		33C5EF0D25463BF4001FA92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		33C5EEC825461432001FA92A /* RSSsssss */ = {
 			isa = PBXGroup;
 			children = (
+				33C5EF0D25463BF4001FA92A /* AppDelegate.swift */,
 				33C5EEC925461432001FA92A /* RSSsssssApp.swift */,
 				33C5EECB25461432001FA92A /* AddFeedView.swift */,
 				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
@@ -276,6 +279,7 @@
 				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				33C5EECC25461432001FA92A /* AddFeedView.swift in Sources */,
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,
+				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
 				33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
