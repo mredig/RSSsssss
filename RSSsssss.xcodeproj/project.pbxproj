@@ -17,6 +17,10 @@
 		33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEFD25461F01001FA92A /* FeedGrabber.swift */; };
 		33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF022546285D001FA92A /* SiteViewModel.swift */; };
 		33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF0D25463BF4001FA92A /* AppDelegate.swift */; };
+		33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */; };
+		33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF1C25463FF2001FA92A /* RSSPostDTO.swift */; };
+		33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF24254640FD001FA92A /* FeedViewModel.swift */; };
+		33C5EF2A25464301001FA92A /* ViewFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF2925464301001FA92A /* ViewFeedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		33C5EEFD25461F01001FA92A /* FeedGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGrabber.swift; sourceTree = "<group>"; };
 		33C5EF022546285D001FA92A /* SiteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteViewModel.swift; sourceTree = "<group>"; };
 		33C5EF0D25463BF4001FA92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSSModels.xcdatamodel; sourceTree = "<group>"; };
+		33C5EF1C25463FF2001FA92A /* RSSPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSPostDTO.swift; sourceTree = "<group>"; };
+		33C5EF24254640FD001FA92A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		33C5EF2925464301001FA92A /* ViewFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFeedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +113,10 @@
 			children = (
 				33C5EF0D25463BF4001FA92A /* AppDelegate.swift */,
 				33C5EEC925461432001FA92A /* RSSsssssApp.swift */,
-				33C5EECB25461432001FA92A /* AddFeedView.swift */,
+				33C5EF2E2546440C001FA92A /* Views */,
 				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
-				33C5EF022546285D001FA92A /* SiteViewModel.swift */,
+				33C5EF3225464413001FA92A /* ViewModels */,
+				33C5EF1B25463FDB001FA92A /* Model */,
 				33C5EECD25461433001FA92A /* Assets.xcassets */,
 				33C5EED225461433001FA92A /* Info.plist */,
 				33C5EECF25461433001FA92A /* Preview Content */,
@@ -139,6 +148,33 @@
 				33C5EEE825461434001FA92A /* Info.plist */,
 			);
 			path = RSSsssssUITests;
+			sourceTree = "<group>";
+		};
+		33C5EF1B25463FDB001FA92A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */,
+				33C5EF1C25463FF2001FA92A /* RSSPostDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33C5EF2E2546440C001FA92A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				33C5EECB25461432001FA92A /* AddFeedView.swift */,
+				33C5EF2925464301001FA92A /* ViewFeedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		33C5EF3225464413001FA92A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				33C5EF022546285D001FA92A /* SiteViewModel.swift */,
+				33C5EF24254640FD001FA92A /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,10 +313,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
+				33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */,
 				33C5EECC25461432001FA92A /* AddFeedView.swift in Sources */,
+				33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */,
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,
 				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
+				33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */,
 				33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */,
+				33C5EF2A25464301001FA92A /* ViewFeedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +659,19 @@
 			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */,
+			);
+			currentVersion = 33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */;
+			path = RSSModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 33C5EEBE25461432001FA92A /* Project object */;
 }

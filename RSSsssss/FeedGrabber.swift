@@ -22,4 +22,11 @@ enum FeedGrabber {
 			}
 			.eraseToAnyPublisher()
 	}
+
+	static func getFeed(_ url: URL) -> AnyPublisher<Data, Error> {
+		URLSession.shared.dataTaskPublisher(for: url)
+			.map(\.data)
+			.mapError { $0 }
+			.eraseToAnyPublisher()
+	}
 }

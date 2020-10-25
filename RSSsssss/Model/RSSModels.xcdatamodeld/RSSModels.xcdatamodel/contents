@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RSSFeed" representedClassName="RSSFeed" syncable="YES" codeGenerationType="class">
+        <attribute name="feedDescription" optional="YES" attributeType="String"/>
+        <attribute name="feedURL" optional="YES" attributeType="URI"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="URI"/>
+        <attribute name="site" optional="YES" attributeType="URI"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RSSPost" inverseName="sourceFeed" inverseEntity="RSSPost"/>
+    </entity>
+    <entity name="RSSPost" representedClassName="RSSPost" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="guid" optional="YES" attributeType="String"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="source" optional="YES" attributeType="URI"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="sourceFeed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RSSFeed" inverseName="posts" inverseEntity="RSSFeed"/>
+    </entity>
+    <elements>
+        <element name="RSSFeed" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="RSSPost" positionX="-54" positionY="18" width="128" height="178"/>
+    </elements>
+</model>

@@ -42,12 +42,16 @@ struct AddFeedView: View {
 					Text("\(siteVM.siteTitle) has no detected RSS feeds")
 				} else {
 					ForEach(siteVM.rssLinks, id: \.link) { link in
-						VStack(alignment: .leading) {
-							Text("\(link.title)")
-							Text("\(link.link.absoluteString)")
-								.font(.caption2)
-								.foregroundColor(Color(.secondaryLabel))
-						}
+						NavigationLink(
+							destination: ViewFeedView(feedVM: FeedViewModel(feedURL: link.link)),
+							label: {
+								VStack(alignment: .leading) {
+									Text("\(link.title)")
+									Text("\(link.link.absoluteString)")
+										.font(.caption2)
+										.foregroundColor(Color(.secondaryLabel))
+								}
+							})
 					}
 				}
 			}
