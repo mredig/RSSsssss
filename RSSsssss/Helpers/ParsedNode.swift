@@ -26,7 +26,7 @@ class ParsedNode: CustomDebugStringConvertible {
 			\(tabs)Node: \(elementName)
 			\(tabs)Attributes: \(attributes.map { "\(tabs)\t\($0.key): \($0.value)" } )
 			\(tabs)Content: \(String(data: content, encoding: .utf8) ?? String(describing: content))
-			\(tabs)Children:\n\(children
+			\(tabs)Children (\(children.count)):\n\(children
 									.map { $0.consoleOutput(indentation + 1) }
 									.reduce("", { $0 + $1 }))
 
@@ -38,3 +38,30 @@ class ParsedNode: CustomDebugStringConvertible {
 	}
 }
 
+extension ParsedNode {
+	var stringContent: String? {
+		String(data: content, encoding: .utf8)
+	}
+
+	var urlContent: URL? {
+		guard let string = String(data: content, encoding: .utf8) else { return nil }
+		return URL(string: string)
+	}
+
+	func firstChild(named name: String) -> ParsedNode? {
+		children.first(where: { $0.elementName == name })
+	}
+
+	func firstChild(namedInPriority names: [String]) -> ParsedNode? {
+		var node: ParsedNode?
+		var iterator = names.makeIterator()
+		while node == nil, let name = iterator.next() {
+			node = firstChild(named: name)
+		}
+		return node
+	}
+
+	func childrenNamed(_ name: String) -> [ParsedNode] {
+		children.filter { $0.elementName == name }
+	}
+}

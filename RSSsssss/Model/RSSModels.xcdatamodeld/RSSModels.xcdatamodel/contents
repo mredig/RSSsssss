@@ -8,10 +8,16 @@
         <attribute name="site" optional="YES" attributeType="URI"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RSSPost" inverseName="sourceFeed" inverseEntity="RSSPost"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="feedURL"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="RSSPost" representedClassName="RSSPost" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="guid" optional="YES" attributeType="String"/>
         <attribute name="itemDescription" optional="YES" attributeType="String"/>
@@ -19,9 +25,14 @@
         <attribute name="source" optional="YES" attributeType="URI"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="sourceFeed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RSSFeed" inverseName="posts" inverseEntity="RSSFeed"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="guid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="RSSFeed" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="RSSPost" positionX="-54" positionY="18" width="128" height="178"/>
+        <element name="RSSPost" positionX="-54" positionY="18" width="128" height="193"/>
     </elements>
 </model>

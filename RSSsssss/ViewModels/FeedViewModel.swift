@@ -7,9 +7,12 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class FeedViewModel: NSObject, ObservableObject {
 	let feedURL: URL
+	let site: URL
+	let context: NSManagedObjectContext
 
 	@Published var state: State = .idle
 
@@ -17,7 +20,9 @@ class FeedViewModel: NSObject, ObservableObject {
 
 	let parsingDelegate = ParsingDelegate()
 
-	init(feedURL: URL) {
+	init(feedURL: URL, site: URL, context: NSManagedObjectContext) {
+		self.site = site
+		self.context = context
 		self.feedURL = feedURL
 		super.init()
 		loadFeed()
@@ -29,7 +34,8 @@ class FeedViewModel: NSObject, ObservableObject {
 			.receive(on: RunLoop.main)
 			.sink(
 				receiveCompletion: { _ in },
-				receiveValue: { data in
+				receiveValue: { [weak self] data in
+					guard let self = self else { return }
 					self.state = .loaded(String(data: data, encoding: .utf8) ?? "")
 
 					let parser = XMLParser(data: data)
@@ -42,7 +48,11 @@ class FeedViewModel: NSObject, ObservableObject {
 						print("Unspecified error while parsing")
 					}
 
-					print(self.parsingDelegate.rootNode?.children.count)
+//					print(self.parsingDelegate.rootNode?.children.count)
+
+					guard let rootNode = self.parsingDelegate.rootNode else { return }
+
+					_ = RSSFeed(context: self.context, parsedXMLDocumentNode: rootNode, site: self.site)
 
 				})
 			.store(in: &bag)

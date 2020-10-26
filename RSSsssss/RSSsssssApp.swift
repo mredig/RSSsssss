@@ -11,9 +11,17 @@ import SwiftUI
 struct RSSsssssApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+	@StateObject private var coreDataStack = CoreDataStack()
+
     var body: some Scene {
         WindowGroup {
             AddFeedView()
+				.environment(\.managedObjectContext, coreDataStack.mainContext)
+				.environmentObject(coreDataStack)
         }
     }
 }
+
+//struct CoreDataKey: EnvironmentKey {
+//	static var defaultValue = CoreDataStack()
+//}
