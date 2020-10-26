@@ -48,12 +48,12 @@ class FeedViewModel: NSObject, ObservableObject {
 						print("Unspecified error while parsing")
 					}
 
-//					print(self.parsingDelegate.rootNode?.children.count)
-
 					guard let rootNode = self.parsingDelegate.rootNode else { return }
 
-					_ = RSSFeed(context: self.context, parsedXMLDocumentNode: rootNode, site: self.site)
-
+					_ = RSSFeed(context: self.context, parsedXMLDocumentNode: rootNode,sourceFeed: self.feedURL, site: self.site)
+					self.context.performAndWait {
+						try? self.context.save()
+					}
 				})
 			.store(in: &bag)
 	}

@@ -10,27 +10,19 @@ import SwiftUI
 struct ViewFeedView: View {
 
 	@StateObject var feedVM: FeedViewModel
+	@StateObject var postsController: ObservedRSSPostsController
 
-	@FetchRequest(
-		entity: RSSPost.entity(),
-		sortDescriptors: [.init(key: "date", ascending: true)]
-	) var items: FetchedResults<RSSPost>
+//	@FetchRequest(
+//		entity: RSSPost.entity(),
+//		sortDescriptors: [.init(key: "date", ascending: true)]
+//	) var items: FetchedResults<RSSPost>
 
 	var body: some View {
-		switch feedVM.state {
-		case .idle, .loading:
-			Text("Loading \(feedVM.feedURL)")
-		case .loaded(let string):
-//			ScrollView {
-//				Text(string)
-//			}
-			List {
-				ForEach(items) { item in
-					Text(item.title ?? "who knows")
-				}
+		List {
+			ForEach(postsController.items) { item in
+				Text(item.title ?? "Untitled")
 			}
-		case .error(let error):
-			Text("\(error as NSError)")
 		}
+
 	}
 }
