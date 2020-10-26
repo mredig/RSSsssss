@@ -24,10 +24,19 @@ struct RSSPostDTO {
 
 // some of these MIGHT need to be optional
 struct RSSFeedDTO {
-	let title: String
-	let site: URL
-	let description: String
-	let id: UUID
-	let feedURL: URL
-	let image: URL?
+	var title: String = "Untitled"
+	var site: URL?
+	var description: String = ""
+	var feedURL: URL?
+	var image: URL?
+
+	internal init(title: String = "Untitled", site: URL? = nil, description: String = "", feedURL: URL? = nil, image: URL? = nil) {
+		self.title = title
+		self.site = site
+		self.description = description
+		self.feedURL = feedURL
+		self.image = image
+	}
+
+	init() {}
 }
