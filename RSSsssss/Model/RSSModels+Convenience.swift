@@ -70,43 +70,13 @@ extension RSSFeed {
 			image: imageNode?.urlContent)
 
 		let itemNodes = parsedChannelNode.childrenNamed("item")
-
-
-//		let fetchRequest: NSFetchRequest<RSSPost> = RSSPost.fetchRequest()
-////		fetchRequest.predicate = NSPredicate(format: "guid == %@", <#T##args: CVarArg...##CVarArg#>)
-//		context.performAndWait {
-//			for itemNode in itemNodes {
-//				guard let guid = itemNode.firstChild(named: "guid")?.stringContent else { continue }
-//				fetchRequest.predicate = NSPredicate(format: "guid == $@", guid)
-//				do {
-//					let result = try context.fetch(fetchRequest)
-//					guard result.isEmpty else { continue }
-//				} catch {
-//					NSLog("Error confirming uniqueness of post: \(error)")
-//				}
-//
-//				_ = RSSPost(context: context, parsedItemNode: itemNode, parent: self)
-//			}
-//		}
 		addPosts(from: itemNodes, on: context)
 	}
 
 	func addPosts(from itemNodes: [ParsedNode], on context: NSManagedObjectContext) {
-		let fetchRequest: NSFetchRequest<RSSPost> = RSSPost.fetchRequest()
 		context.performAndWait {
 			for itemNode in itemNodes {
-				guard
-					itemNode.elementName == "item",
-					let guid = itemNode.firstChild(named: "guid")?.stringContent
-				else { continue }
-
-				fetchRequest.predicate = NSPredicate(format: "guid == %@", guid)
-				do {
-					let result = try context.fetch(fetchRequest)
-					guard result.isEmpty else { continue }
-				} catch {
-					NSLog("Error confirming uniqueness of post: \(error)")
-				}
+				guard itemNode.elementName == "item" else { continue }
 
 				_ = RSSPost(context: context, parsedItemNode: itemNode, parent: self)
 			}
