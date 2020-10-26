@@ -23,7 +23,7 @@ class ParsedNode: CustomDebugStringConvertible {
 		let tabs = Array(repeating: "\t", count: indentation).joined()
 
 		return """
-			\(tabs)Node: \(elementName) (\(indentation))
+			\(tabs)Node: \(elementName)
 			\(tabs)Attributes: \(attributes.map { "\(tabs)\t\($0.key): \($0.value)" } )
 			\(tabs)Content: \(String(data: content, encoding: .utf8) ?? String(describing: content))
 			\(tabs)Children:\n\(children

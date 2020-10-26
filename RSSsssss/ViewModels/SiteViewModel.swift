@@ -67,7 +67,6 @@ class SiteViewModel: ObservableObject {
 		}
 		return (linkStrings ?? []).compactMap {
 			guard let url = URL(string: $0.1, relativeTo: site) else { return nil }
-//			let url = URL(string: <#T##String#>, relativeTo: <#T##URL?#>)
 			return ($0.0, url)
 		}
 	}

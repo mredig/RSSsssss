@@ -42,7 +42,7 @@ class FeedViewModel: NSObject, ObservableObject {
 						print("Unspecified error while parsing")
 					}
 
-					print(self.parsingDelegate.rootNode)
+					print(self.parsingDelegate.rootNode?.children.count)
 
 				})
 			.store(in: &bag)

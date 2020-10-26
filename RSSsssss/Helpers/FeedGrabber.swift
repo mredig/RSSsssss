@@ -16,10 +16,6 @@ enum FeedGrabber {
 			.map { $0.data }
 			.map { String(data: $0, encoding: .utf8) ?? "" }
 			.tryMap { try SwiftSoup.parse($0) }
-			.mapError { error -> Error in
-				print("Error parsing html: \(error)")
-				return error
-			}
 			.eraseToAnyPublisher()
 	}
 
