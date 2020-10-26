@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33C049C525465F5400115D1C /* ParsedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C049C425465F5400115D1C /* ParsedNode.swift */; };
+		33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C049CC25465F8700115D1C /* ParsingDelegate.swift */; };
 		33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEC925461432001FA92A /* RSSsssssApp.swift */; };
 		33C5EECC25461432001FA92A /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EECB25461432001FA92A /* AddFeedView.swift */; };
 		33C5EECE25461433001FA92A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33C5EECD25461433001FA92A /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33C049C425465F5400115D1C /* ParsedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedNode.swift; sourceTree = "<group>"; };
+		33C049CC25465F8700115D1C /* ParsingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingDelegate.swift; sourceTree = "<group>"; };
 		33C5EEC625461432001FA92A /* RSSsssss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSsssss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C5EEC925461432001FA92A /* RSSsssssApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSsssssApp.swift; sourceTree = "<group>"; };
 		33C5EECB25461432001FA92A /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33C049C325465F3900115D1C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
+				33C049C425465F5400115D1C /* ParsedNode.swift */,
+				33C049CC25465F8700115D1C /* ParsingDelegate.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		33C5EEBD25461432001FA92A = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +128,7 @@
 				33C5EF0D25463BF4001FA92A /* AppDelegate.swift */,
 				33C5EEC925461432001FA92A /* RSSsssssApp.swift */,
 				33C5EF2E2546440C001FA92A /* Views */,
-				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
+				33C049C325465F3900115D1C /* Helpers */,
 				33C5EF3225464413001FA92A /* ViewModels */,
 				33C5EF1B25463FDB001FA92A /* Model */,
 				33C5EECD25461433001FA92A /* Assets.xcassets */,
@@ -315,10 +329,12 @@
 				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */,
 				33C5EECC25461432001FA92A /* AddFeedView.swift in Sources */,
+				33C049C525465F5400115D1C /* ParsedNode.swift in Sources */,
 				33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */,
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,
 				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
 				33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */,
+				33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */,
 				33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */,
 				33C5EF2A25464301001FA92A /* ViewFeedView.swift in Sources */,
 			);
