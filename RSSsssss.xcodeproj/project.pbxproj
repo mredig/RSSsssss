@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3392BD57254DC5DC0096BB7E /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD56254DC5DC0096BB7E /* PostDetailView.swift */; };
 		3392BD5C254DC6D40096BB7E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD5B254DC6D40096BB7E /* PostViewModel.swift */; };
+		3392BD61254DC9C10096BB7E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD60254DC9C10096BB7E /* WebView.swift */; };
 		33C049C525465F5400115D1C /* ParsedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C049C425465F5400115D1C /* ParsedNode.swift */; };
 		33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C049CC25465F8700115D1C /* ParsingDelegate.swift */; };
 		33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEC925461432001FA92A /* RSSsssssApp.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		3392BD56254DC5DC0096BB7E /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		3392BD5B254DC6D40096BB7E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		3392BD60254DC9C10096BB7E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		33C049C425465F5400115D1C /* ParsedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedNode.swift; sourceTree = "<group>"; };
 		33C049CC25465F8700115D1C /* ParsingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingDelegate.swift; sourceTree = "<group>"; };
 		33C5EEC625461432001FA92A /* RSSsssss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSsssss.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +194,7 @@
 				33C5EECB25461432001FA92A /* AddFeedView.swift */,
 				33C5EF2925464301001FA92A /* ViewFeedView.swift */,
 				3392BD56254DC5DC0096BB7E /* PostDetailView.swift */,
+				3392BD60254DC9C10096BB7E /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,
 				33CA51C125468A5300972952 /* CoreDataStack.swift in Sources */,
 				33CA51BC2546615700972952 /* RSSModels+Convenience.swift in Sources */,
+				3392BD61254DC9C10096BB7E /* WebView.swift in Sources */,
 				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
 				33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */,
 				33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */,

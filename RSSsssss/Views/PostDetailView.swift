@@ -17,7 +17,11 @@ struct PostDetailView: View {
 				Text(post.title ?? "Post")
 					.font(.title)
 
-				Text(post.content ?? "Content")
+//				Text(post.content ?? "Content")
+				WebView(htmlString: post.content ?? "")
+//					.frame(height: 300)
+					.frame(idealHeight: 1000, maxHeight: .infinity)
+					.border(Color.red)
 			}
 		}
 	}
