@@ -20,7 +20,11 @@ struct ViewFeedView: View {
 	var body: some View {
 		List {
 			ForEach(postsController.items) { item in
-				Text(item.title ?? "Untitled")
+				NavigationLink(
+					destination: PostDetailView(post: item),
+					label: {
+						Text(item.title ?? "Untitled")
+					})
 			}
 		}
 
