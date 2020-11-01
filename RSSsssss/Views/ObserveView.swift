@@ -1,5 +1,5 @@
 //
-//  ObservedView.swift
+//  ObserveView.swift
 //  RSSsssss
 //
 //  Created by Michael Redig on 11/1/20.
