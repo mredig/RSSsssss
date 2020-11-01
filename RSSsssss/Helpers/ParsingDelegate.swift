@@ -8,11 +8,7 @@
 import Foundation
 
 class ParsingDelegate: NSObject, XMLParserDelegate {
-	var currentPath: [String] = [] {
-		didSet {
-			print(currentPath)
-		}
-	}
+	var currentPath: [String] = []
 
 	var rootNode: ParsedNode?
 	var currentNode: ParsedNode?
