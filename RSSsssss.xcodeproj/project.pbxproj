@@ -31,7 +31,6 @@
 		33C5EF2A25464301001FA92A /* ViewFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF2925464301001FA92A /* ViewFeedView.swift */; };
 		33CA51BC2546615700972952 /* RSSModels+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CA51BB2546615700972952 /* RSSModels+Convenience.swift */; };
 		33CA51C125468A5300972952 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CA51C025468A5300972952 /* CoreDataStack.swift */; };
-		33CA51C62546922900972952 /* ObservedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CA51C52546922900972952 /* ObservedResultsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +80,6 @@
 		33C5EF2925464301001FA92A /* ViewFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFeedView.swift; sourceTree = "<group>"; };
 		33CA51BB2546615700972952 /* RSSModels+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSSModels+Convenience.swift"; sourceTree = "<group>"; };
 		33CA51C025468A5300972952 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		33CA51C52546922900972952 /* ObservedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedResultsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +115,6 @@
 				33C049C425465F5400115D1C /* ParsedNode.swift */,
 				33C049CC25465F8700115D1C /* ParsingDelegate.swift */,
 				33CA51C025468A5300972952 /* CoreDataStack.swift */,
-				33CA51C52546922900972952 /* ObservedResultsController.swift */,
 				3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */,
 			);
 			path = Helpers;
@@ -360,7 +357,6 @@
 				3341A79D254F66BD000219E9 /* ObservedFetchedResultsController.swift in Sources */,
 				33C5EECC25461432001FA92A /* AddFeedView.swift in Sources */,
 				33C049C525465F5400115D1C /* ParsedNode.swift in Sources */,
-				33CA51C62546922900972952 /* ObservedResultsController.swift in Sources */,
 				33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */,
 				3392BD57254DC5DC0096BB7E /* PostDetailView.swift in Sources */,
 				33C5EECA25461432001FA92A /* RSSsssssApp.swift in Sources */,

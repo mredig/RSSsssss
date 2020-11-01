@@ -10,12 +10,7 @@ import SwiftUI
 struct ViewFeedView: View {
 
 	@StateObject var feedVM: FeedViewModel
-	@StateObject var postsController: ObservedRSSPostsController
-
-//	@FetchRequest(
-//		entity: RSSPost.entity(),
-//		sortDescriptors: [.init(key: "date", ascending: true)]
-//	) var items: FetchedResults<RSSPost>
+	@StateObject var postsController: ObservedFetchedResultsController<RSSPost>
 
 	var body: some View {
 		List {

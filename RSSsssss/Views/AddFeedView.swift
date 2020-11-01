@@ -44,8 +44,10 @@ struct AddFeedView: View {
 					Text("\(siteVM.siteTitle) has no detected RSS feeds")
 				} else {
 					ForEach(siteVM.rssLinks, id: \.link) { link in
-						NavigationLink(
-							destination: ViewFeedView(feedVM: FeedViewModel(feedURL: link.link, site: siteVM.site!, context: managedObjectContext), postsController: ObservedRSSPostsController(context: managedObjectContext, feed: link.link)),
+						Button(
+							action: {
+								print("add \(link.link) to feeds")
+							},
 							label: {
 								VStack(alignment: .leading) {
 									Text("\(link.title)")
