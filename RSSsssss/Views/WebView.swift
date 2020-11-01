@@ -13,14 +13,18 @@ struct WebView: UIViewRepresentable {
 	let htmlString: String?
 	let url: URL?
 
-	init(htmlString: String) {
+	let contentHeightChangeCallback: (CGFloat) -> Void
+
+	init(htmlString: String, contentHeightChangeCallback: @escaping (CGFloat) -> Void) {
 		self.htmlString = htmlString
 		self.url = nil
+		self.contentHeightChangeCallback = contentHeightChangeCallback
 	}
 
-	init(url: URL) {
+	init(url: URL, contentHeightChangeCallback: @escaping (CGFloat) -> Void) {
 		self.url = url
 		self.htmlString = nil
+		self.contentHeightChangeCallback = contentHeightChangeCallback
 	}
 
 	func makeUIView(context: Context) -> WKWebView {
@@ -38,10 +42,27 @@ struct WebView: UIViewRepresentable {
 	}
 
 	func makeCoordinator() -> Coordinator {
-		Coordinator()
+		Coordinator(parent: self)
 	}
 
-	class Coordinator {
-		let webView = WKWebView()
+	class Coordinator: NSObject, WKNavigationDelegate {
+		let parent: WebView
+
+		let webView: WKWebView = {
+			let config = WKWebViewConfiguration()
+//			config.preferences.minimumFontSize = 160
+			let webView = WKWebView(frame: .zero, configuration: config)
+			return webView
+		}()
+
+		init(parent: WebView) {
+			self.parent = parent
+			super.init()
+			webView.navigationDelegate = self
+		}
+
+		func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+			parent.contentHeightChangeCallback(webView.scrollView.contentSize.height)
+		}
 	}
 }

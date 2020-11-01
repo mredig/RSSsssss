@@ -11,17 +11,20 @@ struct PostDetailView: View {
 
 	@ObservedObject var post: RSSPost
 
+	@State private var textViewHeight: CGFloat = 300
+
 	var body: some View {
 		ScrollView {
 			VStack {
 				Text(post.title ?? "Post")
 					.font(.title)
+					.debugBorder(.yellow)
 
-//				Text(post.content ?? "Content")
-				WebView(htmlString: post.content ?? "")
-//					.frame(height: 300)
-					.frame(idealHeight: 1000, maxHeight: .infinity)
-					.border(Color.red)
+				WebView(htmlString: post.content ?? "") { height in
+					textViewHeight = height
+				}
+				.frame(height: textViewHeight)
+				.debugBorder(.red)
 			}
 		}
 	}
