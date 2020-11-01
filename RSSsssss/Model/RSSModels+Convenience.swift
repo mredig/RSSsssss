@@ -71,19 +71,6 @@ extension RSSFeed {
 			feedURL: sourceFeed,
 			site: site,
 			image: imageNode?.urlContent)
-
-		let itemNodes = parsedChannelNode.childrenNamed("item")
-		addPosts(from: itemNodes, on: context)
-	}
-
-	func addPosts(from itemNodes: [ParsedNode], on context: NSManagedObjectContext) {
-		context.performAndWait {
-			for itemNode in itemNodes {
-				guard itemNode.elementName == "item" else { continue }
-
-				_ = RSSPost(context: context, parsedItemNode: itemNode, parent: self)
-			}
-		}
 	}
 }
 
