@@ -28,7 +28,6 @@
 		33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF0D25463BF4001FA92A /* AppDelegate.swift */; };
 		33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */; };
 		33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF1C25463FF2001FA92A /* RSSPostDTO.swift */; };
-		33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF24254640FD001FA92A /* FeedViewModel.swift */; };
 		33C5EF2A25464301001FA92A /* ViewFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF2925464301001FA92A /* ViewFeedView.swift */; };
 		33CA51BC2546615700972952 /* RSSModels+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CA51BB2546615700972952 /* RSSModels+Convenience.swift */; };
 		33CA51C125468A5300972952 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CA51C025468A5300972952 /* CoreDataStack.swift */; };
@@ -78,7 +77,6 @@
 		33C5EF0D25463BF4001FA92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSSModels.xcdatamodel; sourceTree = "<group>"; };
 		33C5EF1C25463FF2001FA92A /* RSSPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSPostDTO.swift; sourceTree = "<group>"; };
-		33C5EF24254640FD001FA92A /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		33C5EF2925464301001FA92A /* ViewFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFeedView.swift; sourceTree = "<group>"; };
 		33CA51BB2546615700972952 /* RSSModels+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSSModels+Convenience.swift"; sourceTree = "<group>"; };
 		33CA51C025468A5300972952 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				33C5EF022546285D001FA92A /* SiteViewModel.swift */,
-				33C5EF24254640FD001FA92A /* FeedViewModel.swift */,
 				3392BD5B254DC6D40096BB7E /* PostViewModel.swift */,
 			);
 			path = ViewModels;
@@ -375,7 +372,6 @@
 				33CA51BC2546615700972952 /* RSSModels+Convenience.swift in Sources */,
 				3392BD61254DC9C10096BB7E /* WebView.swift in Sources */,
 				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
-				33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */,
 				3341A7BB254F7795000219E9 /* Debugging.swift in Sources */,
 				3341A790254F5E70000219E9 /* RSSController.swift in Sources */,
 				33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */,
