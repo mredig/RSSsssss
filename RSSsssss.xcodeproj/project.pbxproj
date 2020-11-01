@@ -10,6 +10,7 @@
 		3341A790254F5E70000219E9 /* RSSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A78F254F5E70000219E9 /* RSSController.swift */; };
 		3341A79D254F66BD000219E9 /* ObservedFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */; };
 		3341A7A5254F6B29000219E9 /* ObservedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A7A4254F6B29000219E9 /* ObservedView.swift */; };
+		3341A7BB254F7795000219E9 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A7BA254F7795000219E9 /* Debugging.swift */; };
 		3392BD57254DC5DC0096BB7E /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD56254DC5DC0096BB7E /* PostDetailView.swift */; };
 		3392BD5C254DC6D40096BB7E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD5B254DC6D40096BB7E /* PostViewModel.swift */; };
 		3392BD61254DC9C10096BB7E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD60254DC9C10096BB7E /* WebView.swift */; };
@@ -54,6 +55,7 @@
 		3341A78F254F5E70000219E9 /* RSSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSController.swift; sourceTree = "<group>"; };
 		3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedFetchedResultsController.swift; sourceTree = "<group>"; };
 		3341A7A4254F6B29000219E9 /* ObservedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedView.swift; sourceTree = "<group>"; };
+		3341A7BA254F7795000219E9 /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
 		3392BD56254DC5DC0096BB7E /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		3392BD5B254DC6D40096BB7E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		3392BD60254DC9C10096BB7E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				33C049CC25465F8700115D1C /* ParsingDelegate.swift */,
 				33CA51C025468A5300972952 /* CoreDataStack.swift */,
 				3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */,
+				3341A7BA254F7795000219E9 /* Debugging.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				3392BD61254DC9C10096BB7E /* WebView.swift in Sources */,
 				33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */,
 				33C5EF25254640FD001FA92A /* FeedViewModel.swift in Sources */,
+				3341A7BB254F7795000219E9 /* Debugging.swift in Sources */,
 				3341A790254F5E70000219E9 /* RSSController.swift in Sources */,
 				33C049CD25465F8700115D1C /* ParsingDelegate.swift in Sources */,
 				33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */,
