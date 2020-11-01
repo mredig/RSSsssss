@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3341A7A5254F6B29000219E9 /* ObservedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A7A4254F6B29000219E9 /* ObservedView.swift */; };
 		3392BD57254DC5DC0096BB7E /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD56254DC5DC0096BB7E /* PostDetailView.swift */; };
 		3392BD5C254DC6D40096BB7E /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD5B254DC6D40096BB7E /* PostViewModel.swift */; };
 		3392BD61254DC9C10096BB7E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3392BD60254DC9C10096BB7E /* WebView.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3341A7A4254F6B29000219E9 /* ObservedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedView.swift; sourceTree = "<group>"; };
 		3392BD56254DC5DC0096BB7E /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		3392BD5B254DC6D40096BB7E /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		3392BD60254DC9C10096BB7E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				33C5EF2925464301001FA92A /* ViewFeedView.swift */,
 				3392BD56254DC5DC0096BB7E /* PostDetailView.swift */,
 				3392BD60254DC9C10096BB7E /* WebView.swift */,
+				3341A7A4254F6B29000219E9 /* ObservedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3341A7A5254F6B29000219E9 /* ObservedView.swift in Sources */,
 				3392BD5C254DC6D40096BB7E /* PostViewModel.swift in Sources */,
 				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */,
