@@ -110,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3341A7B9254F7750000219E9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3341A78F254F5E70000219E9 /* RSSController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		33C049C325465F3900115D1C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +156,7 @@
 			children = (
 				33C5EF0D25463BF4001FA92A /* AppDelegate.swift */,
 				33C5EEC925461432001FA92A /* RSSsssssApp.swift */,
+				3341A7B9254F7750000219E9 /* Controllers */,
 				33C5EF3225464413001FA92A /* ViewModels */,
 				33C5EF2E2546440C001FA92A /* Views */,
 				33C5EF1B25463FDB001FA92A /* Model */,
@@ -213,7 +222,6 @@
 				33C5EF022546285D001FA92A /* SiteViewModel.swift */,
 				33C5EF24254640FD001FA92A /* FeedViewModel.swift */,
 				3392BD5B254DC6D40096BB7E /* PostViewModel.swift */,
-				3341A78F254F5E70000219E9 /* RSSController.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

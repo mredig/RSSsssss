@@ -22,6 +22,11 @@ class RSSController: ObservableObject {
 		fetchRequest.sortDescriptors = [
 			.init(keyPath: \RSSFeed.title, ascending: true)
 		]
+//		self.feedFetchedResultsController = NSFetchedResultsController<RSSFeed>(
+//			fetchRequest: fetchRequest,
+//			managedObjectContext: stack.mainContext,
+//			sectionNameKeyPath: nil,
+//			cacheName: nil)
 		self.feedFetchedResultsController = .init(context: coreDataStack.mainContext, fetchRequest: fetchRequest)
 
 
@@ -43,6 +48,24 @@ class RSSController: ObservableObject {
 			NSLog("Error saving context: \(error)")
 		}
 	}
+
+//	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: RSSFeed, save: Bool = false) {
+//		let context = stack.container.newBackgroundContext()
+//
+//		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+//		context.performAndWait {
+//			parsedXMLItems.forEach {
+//				_ = RSSPost(context: context, parsedItemNode: $0, parent: sourceFeed)
+//			}
+//		}
+//
+//		guard save else { return }
+//		do {
+//			try stack.save(context: context)
+//		} catch {
+//			NSLog("Error saving context: \(error)")
+//		}
+//	}
 
 	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: URL, save: Bool = false) {
 		let context = stack.container.newBackgroundContext()
@@ -86,4 +109,8 @@ class RSSController: ObservableObject {
 
 		return .init(context: stack.mainContext, fetchRequest: fetchReqeust)
 	}
+
+//	func fetchPost(with guid: String, on context: NSManagedObjectContext? = nil) -> RSSPost? {
+//		let context = context ?? stack.mainContext
+//	}
 }
