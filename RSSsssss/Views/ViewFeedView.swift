@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ViewFeedView: View {
 
-	@StateObject var feedVM: FeedViewModel
 	@StateObject var postsController: ObservedFetchedResultsController<RSSPost>
 
 	var body: some View {
