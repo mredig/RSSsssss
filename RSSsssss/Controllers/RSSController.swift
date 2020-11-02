@@ -57,12 +57,22 @@ class RSSController: ObservableObject {
 
 	// MARK: - CRUD
 	// MARK: CU
-	func addFeed(from parsedXMLDocumentNode: ParsedNode, sourceFeed: URL, site: URL) {
+	func addFeed(from source: URL, site: URL) {
+		remoteLoadXML(from: source)
+			.sink { [weak self] rootDocNode in
+				guard let feed = self?.addFeed(from: rootDocNode, sourceFeed: source, site: site) else { return }
+				self?.refresh(feed)
+			}
+			.store(in: &bag)
+	}
+
+	@discardableResult func addFeed(from parsedXMLDocumentNode: ParsedNode, sourceFeed: URL, site: URL) -> RSSFeed? {
 		let context = stack.container.newBackgroundContext()
 
+		var feed: RSSFeed?
 		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 		context.performAndWait {
-			_ = RSSFeed(context: context, parsedXMLDocumentNode: parsedXMLDocumentNode, sourceFeed: sourceFeed, site: site)
+			feed = RSSFeed(context: context, parsedXMLDocumentNode: parsedXMLDocumentNode, sourceFeed: sourceFeed, site: site)
 		}
 
 		do {
@@ -70,6 +80,7 @@ class RSSController: ObservableObject {
 		} catch {
 			NSLog("Error saving context: \(error)")
 		}
+		return feed
 	}
 
 	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: URL, save: Bool = false) {
