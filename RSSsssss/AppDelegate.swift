@@ -10,4 +10,11 @@ import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
+	let rssController = RSSController(coreDataStack: CoreDataStack())
+
+	override init() {
+		super.init()
+
+		rssController.refreshAllFeeds()
+	}
 }

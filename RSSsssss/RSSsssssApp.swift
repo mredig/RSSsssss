@@ -11,15 +11,13 @@ import SwiftUI
 struct RSSsssssApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-	@StateObject private var rssController = RSSController(coreDataStack: CoreDataStack())
-
     var body: some Scene {
         WindowGroup {
 			NavigationView {
 				FeedListScreen()
 			}
-			.environmentObject(rssController.stack)
-			.environmentObject(rssController)
+			.environmentObject(appDelegate.rssController.stack)
+			.environmentObject(appDelegate.rssController)
         }
     }
 }
