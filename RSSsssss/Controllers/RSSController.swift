@@ -190,7 +190,7 @@ class RSSController: ObservableObject {
 				} else if let error = parser.parserError {
 					throw error
 				} else {
-					throw NSError(domain: "unknown", code: -1, userInfo: ["info": "Unspecified error while parsing"])
+					throw SimpleError(message: "Unspecified error while parsing")
 				}
 			}
 			.replaceNil(with: ParsedNode(elementName: "empty"))

@@ -47,9 +47,13 @@ class SiteViewModel: ObservableObject {
 			.receive(on: RunLoop.main)
 			.sink(
 				receiveCompletion: { completion in
-//					if case .failure(let error) = completion {
-//						self.state = .error(error)
-//					}
+					if case .failure(let error as NSError) = completion {
+						if error.code == -1003 {
+							self.state = .error(SimpleError(message: "\(site) is invalid"))
+						} else {
+							self.state = .error(error)
+						}
+					}
 				},
 				receiveValue: { document in
 					self.state = .loaded(document)

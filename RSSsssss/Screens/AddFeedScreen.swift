@@ -63,7 +63,11 @@ struct AddFeedScreen: View {
 			}
 			.listStyle(GroupedListStyle())
 		case .error(let error):
-			Text("Error: \(error as NSError)")
+			if let error = error as? SimpleError {
+				Text(error.message)
+			} else {
+				Text("Error: \(error as NSError)")
+			}
 		}
 	}
 }
