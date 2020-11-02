@@ -16,16 +16,12 @@ struct PostDetailScreen: View {
 	var body: some View {
 		ScrollView {
 			VStack {
-				Text(post.title ?? "Post")
-					.font(.title)
-					.debugBorder(.yellow)
-
 				WebView(htmlString: post.content ?? "") { height in
 					textViewHeight = height
 				}
 				.frame(height: textViewHeight)
-				.debugBorder(.red)
 			}
 		}
+		.navigationTitle(post.title ?? "Unknown Post Title")
 	}
 }
