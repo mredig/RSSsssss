@@ -56,6 +56,7 @@
 /* Begin PBXFileReference section */
 		33273333254F9A7400C92408 /* View+Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conveniences.swift"; sourceTree = "<group>"; };
 		33273338254FAE3000C92408 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		3327333D254FAE4800C92408 /* RSSModels 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RSSModels 2.xcdatamodel"; sourceTree = "<group>"; };
 		3341A78F254F5E70000219E9 /* RSSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSController.swift; sourceTree = "<group>"; };
 		3341A794254F646C000219E9 /* FeedListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListScreen.swift; sourceTree = "<group>"; };
 		3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedFetchedResultsController.swift; sourceTree = "<group>"; };
@@ -740,9 +741,10 @@
 		33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3327333D254FAE4800C92408 /* RSSModels 2.xcdatamodel */,
 				33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */,
 			);
-			currentVersion = 33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */;
+			currentVersion = 3327333D254FAE4800C92408 /* RSSModels 2.xcdatamodel */;
 			path = RSSModels.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
