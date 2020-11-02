@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PostDetailView: View {
+struct PostDetailScreen: View {
 
 	@ObservedObject var post: RSSPost
 

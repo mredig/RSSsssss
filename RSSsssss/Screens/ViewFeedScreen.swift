@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewFeedView: View {
+struct ViewFeedScreen: View {
 
 	@StateObject var postsController: ObservedFetchedResultsController<RSSPost>
 
@@ -15,7 +15,7 @@ struct ViewFeedView: View {
 		List {
 			ForEach(postsController.items) { item in
 				NavigationLink(
-					destination: PostDetailView(post: item),
+					destination: PostDetailScreen(post: item),
 					label: {
 						Text(item.title ?? "Untitled")
 					})

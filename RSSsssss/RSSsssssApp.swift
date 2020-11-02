@@ -16,7 +16,7 @@ struct RSSsssssApp: App {
     var body: some Scene {
         WindowGroup {
 			NavigationView {
-				FeedListView()
+				FeedListScreen()
 			}
 			.environmentObject(rssController.stack)
 			.environmentObject(rssController)

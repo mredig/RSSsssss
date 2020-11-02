@@ -1,5 +1,5 @@
 //
-//  FeedListView.swift
+//  FeedListScreen.swift
 //  RSSsssss
 //
 //  Created by Michael Redig on 11/1/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeedListView: View {
+struct FeedListScreen: View {
 
 	@EnvironmentObject var rssController: RSSController
 
@@ -32,7 +32,7 @@ struct FeedListView: View {
 					}),
 			trailing:
 				NavigationLink(
-					destination: AddFeedView(),
+					destination: AddFeedScreen(),
 					label: {
 						Image(systemName: "plus")
 					})
@@ -42,6 +42,6 @@ struct FeedListView: View {
 
 struct FeedListView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedListView()
+        FeedListScreen()
     }
 }
