@@ -12,8 +12,8 @@ import Combine
 class RSSController: ObservableObject {
 	static private let refreshQueue = DispatchQueue(label: "Feed refresh queue")
 
-	private(set) var feedFetchedResultsController: ObservedFetchedResultsController<RSSFeed>
-	private(set) var postsFetchedResultsControllers: [URL: ObservedFetchedResultsController<RSSPost>] = [:]
+	private(set) var feedObservedResultsController: ObservedFetchedResultsController<RSSFeed>
+	private(set) var postsObservedResultsControllers: [URL: ObservedFetchedResultsController<RSSPost>] = [:]
 
 	let stack: CoreDataStack
 
@@ -27,7 +27,7 @@ class RSSController: ObservableObject {
 			.init(keyPath: \RSSFeed.title, ascending: true)
 		]
 
-		self.feedFetchedResultsController = .init(context: coreDataStack.mainContext, fetchRequest: fetchRequest)
+		self.feedObservedResultsController = .init(context: coreDataStack.mainContext, fetchRequest: fetchRequest)
 	}
 
 	// MARK: - Collection Controls

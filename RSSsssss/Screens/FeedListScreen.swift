@@ -12,7 +12,7 @@ struct FeedListScreen: View {
 	@EnvironmentObject var rssController: RSSController
 
     var body: some View {
-		ObserveView(obj: rssController.feedFetchedResultsController) { feedFRC in
+		ObserveView(obj: rssController.feedObservedResultsController) { feedFRC in
 			List {
 				ForEach(feedFRC.items) { item in
 					Text(item.title ?? "No title")
