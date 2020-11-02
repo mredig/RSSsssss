@@ -13,15 +13,18 @@ struct WebView: UIViewRepresentable {
 	let htmlString: String?
 	let url: URL?
 
-	let contentHeightChangeCallback: (CGFloat) -> Void
+	private var _scrollInsets: UIEdgeInsets = .zero
 
-	init(htmlString: String, contentHeightChangeCallback: @escaping (CGFloat) -> Void) {
+	let contentHeightChangeCallback: ((CGFloat) -> Void)?
+	var scrollOffsetCallbacks: [(CGPoint) -> Void] = []
+
+	init(htmlString: String, contentHeightChangeCallback: ((CGFloat) -> Void)? = nil) {
 		self.htmlString = Self.injectStyling(into: htmlString)
 		self.url = nil
 		self.contentHeightChangeCallback = contentHeightChangeCallback
 	}
 
-	init(url: URL, contentHeightChangeCallback: @escaping (CGFloat) -> Void) {
+	init(url: URL, contentHeightChangeCallback: ((CGFloat) -> Void)? = nil) {
 		self.url = url
 		self.htmlString = nil
 		self.contentHeightChangeCallback = contentHeightChangeCallback
@@ -39,6 +42,8 @@ struct WebView: UIViewRepresentable {
 			let request = URLRequest(url: url)
 			webView.load(request)
 		}
+
+		webView.scrollView.contentInset = _scrollInsets
 	}
 
 	func makeCoordinator() -> Coordinator {
@@ -55,6 +60,7 @@ struct WebView: UIViewRepresentable {
 		iframe { max-width: 100% }
 		div { max-width: 100% }
 		body { background-color: #fff; color: #111; }
+		body { font-family: Helvetica, Arial, sans-serif; }
 
 		@media screen and (prefers-color-scheme: dark) {
 			body { background-color: #000; color: #ddd; }
@@ -82,7 +88,15 @@ struct WebView: UIViewRepresentable {
 		}
 
 		func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-			parent.contentHeightChangeCallback(webView.scrollView.contentSize.height)
+			parent.contentHeightChangeCallback?(webView.scrollView.contentSize.height)
 		}
+	}
+}
+
+extension WebView {
+	func scrollInsets(_ insets: UIEdgeInsets) -> Self {
+		var new = self
+		new._scrollInsets = insets
+		return new
 	}
 }

@@ -11,17 +11,23 @@ struct PostDetailScreen: View {
 
 	@ObservedObject var post: RSSPost
 
-	@State private var textViewHeight: CGFloat = 300
-
 	var body: some View {
-		ScrollView {
-			VStack {
-				WebView(htmlString: post.content ?? "") { height in
-					textViewHeight = height
-				}
-				.frame(height: textViewHeight)
-			}
+		GeometryReader { geo in
+			WebView(htmlString: post.content ?? "")
+				.frame(geo.size)
 		}
+		.ignoresSafeArea(.container, edges: .bottom)
 		.navigationTitle(post.title ?? "Unknown Post Title")
+		.navigationBarItems(trailing: linkButton())
+	}
+
+	@ViewBuilder private func linkButton() -> some View {
+		if let link = post.link {
+			Link(
+				destination: link,
+				label: {
+					Image(systemName: "safari")
+				})
+		}
 	}
 }
