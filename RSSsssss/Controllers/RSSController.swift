@@ -133,15 +133,6 @@ class RSSController: ObservableObject {
 		return feed
 	}
 
-	func observableRSSFeedFRC() -> ObservedFetchedResultsController<RSSFeed> {
-		let fetchReqeust: NSFetchRequest<RSSFeed> = RSSFeed.fetchRequest()
-
-		fetchReqeust.sortDescriptors = [
-			.init(keyPath: \RSSFeed.title, ascending: true)
-		]
-
-		return .init(context: stack.mainContext, fetchRequest: fetchReqeust)
-	}
 
 	// MARK: - Utility
 	private func remoteLoadXML(from url: URL) -> AnyPublisher<ParsedNode, Never> {
