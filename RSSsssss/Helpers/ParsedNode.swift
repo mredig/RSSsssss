@@ -64,4 +64,18 @@ extension ParsedNode {
 	func childrenNamed(_ name: String) -> [ParsedNode] {
 		children.filter { $0.elementName == name }
 	}
+
+	func firstDescendent(named name: String) -> ParsedNode? {
+		if let match = firstChild(named: name) {
+			return match
+		}
+
+		for child in children {
+			if let match = child.firstDescendent(named: name) {
+				return match
+			}
+		}
+
+		return nil
+	}
 }
