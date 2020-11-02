@@ -54,6 +54,12 @@ struct WebView: UIViewRepresentable {
 		img { max-width: 100% }
 		iframe { max-width: 100% }
 		div { max-width: 100% }
+		body { background-color: #fff; color: #111; }
+
+		@media screen and (prefers-color-scheme: dark) {
+			body { background-color: #000; color: #ddd; }
+			a { color: #0af; }
+		}
 		</style>
 		"""
 
