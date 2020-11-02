@@ -11,25 +11,25 @@ struct AddFeedView: View {
 
 	@StateObject var siteVM = SiteViewModel()
 
-	@Environment(\.managedObjectContext) var managedObjectContext
+	@EnvironmentObject var rssController: RSSController
 
-    var body: some View {
-		NavigationView {
-			VStack {
-				TextField("Input a url with an rss feed.", text: $siteVM.siteInput)
-					.autocapitalization(.none)
-					.disableAutocorrection(true)
-					.padding(8)
-					.background(Color(.secondarySystemBackground))
-					.cornerRadius(8)
-					.padding()
+	@Environment(\.presentationMode) var presentationMode
 
-				viewModelView
-
-				Spacer()
-			}
-			.navigationTitle("Add new Feed")
+	var body: some View {
+		VStack {
+			TextField("Input a url with an rss feed.", text: $siteVM.siteInput)
+				.autocapitalization(.none)
+				.disableAutocorrection(true)
+				.padding(8)
+				.background(Color(.secondarySystemBackground))
+				.cornerRadius(8)
+				.padding()
+			
+			viewModelView
+			
+			Spacer()
 		}
+		.navigationTitle("Add new Feed")
     }
 
 	@ViewBuilder private var viewModelView: some View {
@@ -46,7 +46,10 @@ struct AddFeedView: View {
 					ForEach(siteVM.rssLinks, id: \.link) { link in
 						Button(
 							action: {
-								print("add \(link.link) to feeds")
+//								print("add \(link.link) to feeds")
+								guard let site = siteVM.site else { return }
+								presentationMode.wrappedValue.dismiss()
+								rssController.addFeed(from: link.link, site: site)
 							},
 							label: {
 								VStack(alignment: .leading) {
