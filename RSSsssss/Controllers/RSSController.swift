@@ -7,13 +7,17 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class RSSController: ObservableObject {
+	static private let refreshQueue = DispatchQueue(label: "Feed refresh queue")
 
 	private(set) var feedFetchedResultsController: ObservedFetchedResultsController<RSSFeed>
 	private(set) var postsFetchedResultsControllers: [URL: ObservedFetchedResultsController<RSSPost>] = [:]
 
 	let stack: CoreDataStack
+
+	private var bag: Set<AnyCancellable> = []
 
 	init(coreDataStack: CoreDataStack) {
 		self.stack = coreDataStack
@@ -30,6 +34,47 @@ class RSSController: ObservableObject {
 		self.feedFetchedResultsController = .init(context: coreDataStack.mainContext, fetchRequest: fetchRequest)
 
 
+	}
+
+	// MARK: - Collection Controls
+	func refreshAllFeeds() {
+		let backgroundContext = stack.container.newBackgroundContext()
+		let feeds = fetchFeeds(on: backgroundContext)
+
+		feeds.forEach(refresh)
+	}
+
+	func refresh(_ feed: RSSFeed) {
+		guard let feedURL = feed.feedURL else { return }
+
+		URLSession.shared.dataTaskPublisher(for: feedURL)
+			.receive(on: Self.refreshQueue)
+			.map(\.data)
+			.tryMap { data -> ParsedNode? in
+				let parseDelegate = ParsingDelegate()
+				let parser = XMLParser(data: data)
+				parser.delegate = parseDelegate
+
+				if parser.parse() {
+					return parseDelegate.rootNode
+				} else if let error = parser.parserError {
+					throw error
+				} else {
+					throw NSError(domain: "unknown", code: -1, userInfo: ["info": "Unspecified error while parsing"])
+				}
+			}
+			.replaceNil(with: ParsedNode(elementName: "empty"))
+			.replaceError(with: ParsedNode(elementName: "empty"))
+			.sink { [weak self] rootDocumentNode in
+				guard
+					let rssNode = rootDocumentNode.firstChild(named: "rss"),
+					let channelNode = rssNode.firstChild(named: "channel")
+				else { return }
+
+				let itemNodes = channelNode.childrenNamed("item")
+				self?.addPosts(from: itemNodes, sourceFeed: feedURL)
+			}
+			.store(in: &bag)
 	}
 
 	// MARK: - CRUD
@@ -82,8 +127,25 @@ class RSSController: ObservableObject {
 
 	// MARK: R
 	/// If context is unspecified, uses main context
-	func fetchFeed(with sourceURL: URL, on context: NSManagedObjectContext? = nil) -> RSSFeed? {
+	func fetchFeeds(on context: NSManagedObjectContext? = nil) -> [RSSFeed] {
+		let context = context ?? stack.mainContext
 
+		let fetchRequest: NSFetchRequest<RSSFeed> = RSSFeed.fetchRequest()
+
+		var feeds: [RSSFeed] = []
+
+		context.performAndWait {
+			do {
+				feeds = try context.fetch(fetchRequest)
+			} catch {
+				NSLog("Error fetching feeds: \(error)")
+			}
+		}
+		return feeds
+	}
+
+	/// If context is unspecified, uses main context
+	func fetchFeed(with sourceURL: URL, on context: NSManagedObjectContext? = nil) -> RSSFeed? {
 		let context = context ?? stack.mainContext
 
 		let fetchRequest: NSFetchRequest<RSSFeed> = RSSFeed.fetchRequest()
