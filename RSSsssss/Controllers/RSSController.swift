@@ -49,7 +49,7 @@ class RSSController: ObservableObject {
 					else { return }
 
 					let itemNodes = channelNode.childrenNamed("item")
-					self?.addPosts(from: itemNodes, sourceFeed: feedURL)
+					self?.addPosts(from: itemNodes, sourceFeed: feedURL, save: true)
 				}
 				.store(in: &bag)
 		}
@@ -94,6 +94,13 @@ class RSSController: ObservableObject {
 				_ = RSSPost(context: context, parsedItemNode: $0, parent: feed)
 			}
 		}
+
+		guard save else { return }
+		do {
+			try stack.save(context: context)
+		} catch {
+			NSLog("Error saving posts: \(error)")
+		}
 	}
 
 	// MARK: R
@@ -133,6 +140,24 @@ class RSSController: ObservableObject {
 		return feed
 	}
 
+	func observableRSSPostFRC(for feed: RSSFeed) -> ObservedFetchedResultsController<RSSPost> {
+		guard let feedURL = feed.feedURL else { fatalError("Somehow a feed was created without a url! \(feed)") }
+		if let ofrc = postsObservedResultsControllers[feedURL] {
+			return ofrc
+		}
+
+		let fetchRequest: NSFetchRequest<RSSPost> = RSSPost.fetchRequest()
+
+		fetchRequest.predicate = NSPredicate(format: "sourceFeed == %@", feed)
+
+		fetchRequest.sortDescriptors = [
+			.init(keyPath: \RSSPost.date, ascending: false)
+		]
+
+		let ofrc = ObservedFetchedResultsController(context: stack.mainContext, fetchRequest: fetchRequest)
+		postsObservedResultsControllers[feedURL] = ofrc
+		return ofrc
+	}
 
 	// MARK: - Utility
 	private func remoteLoadXML(from url: URL) -> AnyPublisher<ParsedNode, Never> {

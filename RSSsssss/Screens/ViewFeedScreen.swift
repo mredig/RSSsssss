@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ViewFeedScreen: View {
 
+	let title: String
 	@StateObject var postsController: ObservedFetchedResultsController<RSSPost>
 
 	var body: some View {
@@ -21,6 +22,7 @@ struct ViewFeedScreen: View {
 					})
 			}
 		}
+		.navigationTitle(title)
 
 	}
 }

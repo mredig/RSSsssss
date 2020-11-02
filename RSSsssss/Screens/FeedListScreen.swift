@@ -15,7 +15,13 @@ struct FeedListScreen: View {
 		ObserveView(obj: rssController.feedObservedResultsController) { feedFRC in
 			List {
 				ForEach(feedFRC.items) { item in
-					Text(item.title ?? "No title")
+					NavigationLink(
+						destination:
+							ViewFeedScreen(title: item.title ?? "Unknown title", postsController: rssController.observableRSSPostFRC(for: item)),
+						label: {
+							Text(item.title ?? "No title")
+						})
+						.contentShape(Rectangle())
 				}
 			}
 			.listStyle(GroupedListStyle())
