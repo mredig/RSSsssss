@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33273334254F9A7400C92408 /* View+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33273333254F9A7400C92408 /* View+Conveniences.swift */; };
+		33273339254FAE3000C92408 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33273338254FAE3000C92408 /* ScrollView.swift */; };
 		3341A790254F5E70000219E9 /* RSSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A78F254F5E70000219E9 /* RSSController.swift */; };
 		3341A795254F646C000219E9 /* FeedListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A794254F646C000219E9 /* FeedListScreen.swift */; };
 		3341A79D254F66BD000219E9 /* ObservedFetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		33273333254F9A7400C92408 /* View+Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conveniences.swift"; sourceTree = "<group>"; };
+		33273338254FAE3000C92408 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		3341A78F254F5E70000219E9 /* RSSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSController.swift; sourceTree = "<group>"; };
 		3341A794254F646C000219E9 /* FeedListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListScreen.swift; sourceTree = "<group>"; };
 		3341A79C254F66BD000219E9 /* ObservedFetchedResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedFetchedResultsController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				3392BD60254DC9C10096BB7E /* WebView.swift */,
 				3341A7A4254F6B29000219E9 /* ObserveView.swift */,
+				33273338254FAE3000C92408 /* ScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3341A7A5254F6B29000219E9 /* ObserveView.swift in Sources */,
+				33273339254FAE3000C92408 /* ScrollView.swift in Sources */,
 				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				3341A7C6254F7A18000219E9 /* RSSPost+Convenience.swift in Sources */,
 				33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */,
