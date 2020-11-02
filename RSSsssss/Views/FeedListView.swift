@@ -22,6 +22,14 @@ struct FeedListView: View {
 		}
 		.navigationTitle("Your Feeds")
 		.navigationBarItems(
+			leading:
+				Button(
+					action: {
+						rssController.refreshAllFeeds()
+					},
+					label: {
+						Image(systemName: "arrow.clockwise.circle")
+					}),
 			trailing:
 				NavigationLink(
 					destination: AddFeedView(),
