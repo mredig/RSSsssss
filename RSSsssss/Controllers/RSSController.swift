@@ -159,6 +159,20 @@ class RSSController: ObservableObject {
 		return ofrc
 	}
 
+	// MARK: D
+	func delete(feed: RSSFeed) {
+		guard let context = feed.managedObjectContext else { return }
+		context.performAndWait {
+			context.delete(feed)
+		}
+
+		do {
+			try stack.save(context: context)
+		} catch {
+			NSLog("Error deleting feed: \(error)")
+		}
+	}
+
 	// MARK: - Utility
 	private func remoteLoadXML(from url: URL) -> AnyPublisher<ParsedNode, Never> {
 		URLSession.shared.dataTaskPublisher(for: url)

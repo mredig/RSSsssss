@@ -23,8 +23,13 @@ struct FeedListScreen: View {
 						})
 						.contentShape(Rectangle())
 				}
+				.onDelete { indexSet in
+					let feeds = indexSet.map { feedFRC.items[$0] }
+					feeds.forEach { rssController.delete(feed: $0) }
+				}
 			}
 			.listStyle(GroupedListStyle())
+
 		}
 		.navigationTitle("Your Feeds")
 		.navigationBarItems(
