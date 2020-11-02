@@ -56,7 +56,7 @@ struct WebView: UIViewRepresentable {
 		let scaling = ##"<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />"##
 		let style = """
 		<style>
-		img { max-width: 100% }
+		img { max-width: 100%; margin-bottom: 16pt; }
 		iframe { max-width: 100% }
 		div { max-width: 100% }
 		body { background-color: #fff; color: #111; }
@@ -89,6 +89,29 @@ struct WebView: UIViewRepresentable {
 
 		func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 			parent.contentHeightChangeCallback?(webView.scrollView.contentSize.height)
+
+
+			let js = """
+			var imgs = document.getElementsByTagName("img");
+
+			for (var i = 0; i < imgs.length; i++) {
+				imgs[i].removeAttribute("width");
+				imgs[i].removeAttribute("height");
+			}
+
+			var iframes = document.getElementsByTagName("iframe");
+
+			for (var i = 0; i < iframes.length; i++) {
+				iframes[i].removeAttribute("width");
+				iframes[i].removeAttribute("height");
+			}
+			"""
+
+			webView.evaluateJavaScript(js) { _, error in
+				if let error = error {
+					print("Error cleaning elements: \(error)")
+				}
+			}
 		}
 	}
 }
