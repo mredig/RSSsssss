@@ -46,7 +46,6 @@ struct AddFeedView: View {
 					ForEach(siteVM.rssLinks, id: \.link) { link in
 						Button(
 							action: {
-//								print("add \(link.link) to feeds")
 								guard let site = siteVM.site else { return }
 								presentationMode.wrappedValue.dismiss()
 								rssController.addFeed(from: link.link, site: site)
