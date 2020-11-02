@@ -26,14 +26,8 @@ class RSSController: ObservableObject {
 		fetchRequest.sortDescriptors = [
 			.init(keyPath: \RSSFeed.title, ascending: true)
 		]
-//		self.feedFetchedResultsController = NSFetchedResultsController<RSSFeed>(
-//			fetchRequest: fetchRequest,
-//			managedObjectContext: stack.mainContext,
-//			sectionNameKeyPath: nil,
-//			cacheName: nil)
+
 		self.feedFetchedResultsController = .init(context: coreDataStack.mainContext, fetchRequest: fetchRequest)
-
-
 	}
 
 	// MARK: - Collection Controls
@@ -45,36 +39,20 @@ class RSSController: ObservableObject {
 	}
 
 	func refresh(_ feed: RSSFeed) {
-		guard let feedURL = feed.feedURL else { return }
+		feed.managedObjectContext?.performAndWait {
+			guard let feedURL = feed.feedURL else { return }
+			remoteLoadXML(from: feedURL)
+				.sink { [weak self] rootDocumentNode in
+					guard
+						let rssNode = rootDocumentNode.firstChild(named: "rss"),
+						let channelNode = rssNode.firstChild(named: "channel")
+					else { return }
 
-		URLSession.shared.dataTaskPublisher(for: feedURL)
-			.receive(on: Self.refreshQueue)
-			.map(\.data)
-			.tryMap { data -> ParsedNode? in
-				let parseDelegate = ParsingDelegate()
-				let parser = XMLParser(data: data)
-				parser.delegate = parseDelegate
-
-				if parser.parse() {
-					return parseDelegate.rootNode
-				} else if let error = parser.parserError {
-					throw error
-				} else {
-					throw NSError(domain: "unknown", code: -1, userInfo: ["info": "Unspecified error while parsing"])
+					let itemNodes = channelNode.childrenNamed("item")
+					self?.addPosts(from: itemNodes, sourceFeed: feedURL)
 				}
-			}
-			.replaceNil(with: ParsedNode(elementName: "empty"))
-			.replaceError(with: ParsedNode(elementName: "empty"))
-			.sink { [weak self] rootDocumentNode in
-				guard
-					let rssNode = rootDocumentNode.firstChild(named: "rss"),
-					let channelNode = rssNode.firstChild(named: "channel")
-				else { return }
-
-				let itemNodes = channelNode.childrenNamed("item")
-				self?.addPosts(from: itemNodes, sourceFeed: feedURL)
-			}
-			.store(in: &bag)
+				.store(in: &bag)
+		}
 	}
 
 	// MARK: - CRUD
@@ -93,24 +71,6 @@ class RSSController: ObservableObject {
 			NSLog("Error saving context: \(error)")
 		}
 	}
-
-//	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: RSSFeed, save: Bool = false) {
-//		let context = stack.container.newBackgroundContext()
-//
-//		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-//		context.performAndWait {
-//			parsedXMLItems.forEach {
-//				_ = RSSPost(context: context, parsedItemNode: $0, parent: sourceFeed)
-//			}
-//		}
-//
-//		guard save else { return }
-//		do {
-//			try stack.save(context: context)
-//		} catch {
-//			NSLog("Error saving context: \(error)")
-//		}
-//	}
 
 	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: URL, save: Bool = false) {
 		let context = stack.container.newBackgroundContext()
@@ -172,7 +132,26 @@ class RSSController: ObservableObject {
 		return .init(context: stack.mainContext, fetchRequest: fetchReqeust)
 	}
 
-//	func fetchPost(with guid: String, on context: NSManagedObjectContext? = nil) -> RSSPost? {
-//		let context = context ?? stack.mainContext
-//	}
+	// MARK: - Utility
+	private func remoteLoadXML(from url: URL) -> AnyPublisher<ParsedNode, Never> {
+		URLSession.shared.dataTaskPublisher(for: url)
+			.receive(on: Self.refreshQueue)
+			.map(\.data)
+			.tryMap { data -> ParsedNode? in
+				let parseDelegate = ParsingDelegate()
+				let parser = XMLParser(data: data)
+				parser.delegate = parseDelegate
+
+				if parser.parse() {
+					return parseDelegate.rootNode
+				} else if let error = parser.parserError {
+					throw error
+				} else {
+					throw NSError(domain: "unknown", code: -1, userInfo: ["info": "Unspecified error while parsing"])
+				}
+			}
+			.replaceNil(with: ParsedNode(elementName: "empty"))
+			.replaceError(with: ParsedNode(elementName: "empty"))
+			.eraseToAnyPublisher()
+	}
 }
