@@ -40,7 +40,10 @@ class SiteViewModel: ObservableObject {
 		guard let site = site else { return }
 		bag.forEach { $0.cancel() }
 
-		FeedGrabber.getSite(site)
+		URLSession.shared.dataTaskPublisher(for: site)
+			.map { $0.data }
+			.map { String(data: $0, encoding: .utf8) ?? "" }
+			.tryMap { try SwiftSoup.parse($0) }
 			.receive(on: RunLoop.main)
 			.sink(
 				receiveCompletion: { completion in

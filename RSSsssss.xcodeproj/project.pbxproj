@@ -27,7 +27,6 @@
 		33C5EEDC25461434001FA92A /* RSSsssssTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEDB25461434001FA92A /* RSSsssssTests.swift */; };
 		33C5EEE725461434001FA92A /* RSSsssssUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEE625461434001FA92A /* RSSsssssUITests.swift */; };
 		33C5EEF925461EED001FA92A /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 33C5EEF825461EED001FA92A /* SwiftSoup */; };
-		33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EEFD25461F01001FA92A /* FeedGrabber.swift */; };
 		33C5EF032546285D001FA92A /* SiteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF022546285D001FA92A /* SiteViewModel.swift */; };
 		33C5EF0E25463BF4001FA92A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF0D25463BF4001FA92A /* AppDelegate.swift */; };
 		33C5EF1725463E08001FA92A /* RSSModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33C5EF1525463E08001FA92A /* RSSModels.xcdatamodeld */; };
@@ -81,7 +80,6 @@
 		33C5EEE225461434001FA92A /* RSSsssssUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSsssssUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C5EEE625461434001FA92A /* RSSsssssUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSsssssUITests.swift; sourceTree = "<group>"; };
 		33C5EEE825461434001FA92A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33C5EEFD25461F01001FA92A /* FeedGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedGrabber.swift; sourceTree = "<group>"; };
 		33C5EF022546285D001FA92A /* SiteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteViewModel.swift; sourceTree = "<group>"; };
 		33C5EF0D25463BF4001FA92A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33C5EF1625463E08001FA92A /* RSSModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RSSModels.xcdatamodel; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 		33C049C325465F3900115D1C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				33C5EEFD25461F01001FA92A /* FeedGrabber.swift */,
 				33C049C425465F5400115D1C /* ParsedNode.swift */,
 				33C049CC25465F8700115D1C /* ParsingDelegate.swift */,
 				33CA51C025468A5300972952 /* CoreDataStack.swift */,
@@ -381,7 +378,6 @@
 			files = (
 				3341A7A5254F6B29000219E9 /* ObserveView.swift in Sources */,
 				33273339254FAE3000C92408 /* ScrollView.swift in Sources */,
-				33C5EEFE25461F01001FA92A /* FeedGrabber.swift in Sources */,
 				3341A7C6254F7A18000219E9 /* RSSPost+Convenience.swift in Sources */,
 				33C5EF1D25463FF2001FA92A /* RSSPostDTO.swift in Sources */,
 				3341A79D254F66BD000219E9 /* ObservedFetchedResultsController.swift in Sources */,
