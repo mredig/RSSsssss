@@ -10,6 +10,7 @@ import SwiftUI
 struct PostDetailScreen: View {
 
 	@ObservedObject var post: RSSPost
+	@EnvironmentObject var rssController: RSSController
 
 	var body: some View {
 		GeometryReader { geo in
@@ -19,6 +20,9 @@ struct PostDetailScreen: View {
 		.ignoresSafeArea(.container, edges: .bottom)
 		.navigationTitle(post.title ?? "Unknown Post Title")
 		.navigationBarItems(trailing: linkButton())
+		.onAppear {
+			rssController.markPostAsRead(post)
+		}
 	}
 
 	@ViewBuilder private func linkButton() -> some View {

@@ -56,7 +56,7 @@ class RSSController: ObservableObject {
 	}
 
 	// MARK: - CRUD
-	// MARK: CU
+	// MARK: C
 	func addFeed(from source: URL, site: URL) {
 		remoteLoadXML(from: source)
 			.sink { [weak self] rootDocNode in
@@ -75,32 +75,38 @@ class RSSController: ObservableObject {
 			feed = RSSFeed(context: context, parsedXMLDocumentNode: parsedXMLDocumentNode, sourceFeed: sourceFeed, site: site)
 		}
 
-		do {
-			try stack.save(context: context)
-		} catch {
-			NSLog("Error saving context: \(error)")
-		}
+		save(context: context, errorMessage: "Error saving feed")
 		return feed
 	}
 
-	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: URL, save: Bool = false) {
+	func addPosts(from parsedXMLItems: [ParsedNode], sourceFeed: URL, save shouldSave: Bool = false) {
 		let context = stack.container.newBackgroundContext()
 
 		guard let feed = fetchFeed(with: sourceFeed, on: context) else { return }
 
-		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+		context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
 		context.performAndWait {
 			parsedXMLItems.forEach {
 				_ = RSSPost(context: context, parsedItemNode: $0, parent: feed)
 			}
 		}
 
-		guard save else { return }
-		do {
-			try stack.save(context: context)
-		} catch {
-			NSLog("Error saving posts: \(error)")
+		guard shouldSave else { return }
+		save(context: context, errorMessage: "Error saving posts")
+	}
+
+	// MARK: U
+	func markPostAsRead(_ post: RSSPost) {
+		guard
+			let context = post.managedObjectContext,
+			!post.isRead
+		else { return }
+
+		context.performAndWait {
+			post.isRead = true
 		}
+
+		save(context: context, errorMessage: "Error marking post as read")
 	}
 
 	// MARK: R
@@ -166,11 +172,7 @@ class RSSController: ObservableObject {
 			context.delete(feed)
 		}
 
-		do {
-			try stack.save(context: context)
-		} catch {
-			NSLog("Error deleting feed: \(error)")
-		}
+		save(context: context, errorMessage: "Error deleting feed")
 	}
 
 	// MARK: - Utility
@@ -194,5 +196,13 @@ class RSSController: ObservableObject {
 			.replaceNil(with: ParsedNode(elementName: "empty"))
 			.replaceError(with: ParsedNode(elementName: "empty"))
 			.eraseToAnyPublisher()
+	}
+
+	private func save(context: NSManagedObjectContext, errorMessage: String? = nil) {
+		do {
+			try stack.save(context: context)
+		} catch {
+			NSLog("\(errorMessage ?? "Error saving context"): \(error)")
+		}
 	}
 }
