@@ -34,10 +34,19 @@ extension RSSPost {
 		self.content = content
 		self.category = category
 		self.date = date
-		self.guid = guid
+		self.guid = Self.guidFixer(guid: guid, link: link, title: title, description: itemDescription, content: content, feed: sourceFeed)
 		self.link = link
 		self.source = source
 		self.sourceFeed = sourceFeed
+	}
+
+	private static func guidFixer(guid: String?, link: URL?, title: String?, description: String?, content: String?, feed: RSSFeed) -> String {
+		guard let feedURL = feed.feedURL else { fatalError("Feed without a feedURL! \(feed)") }
+		if let guid = guid {
+			return "\(feedURL.absoluteString)-\(guid)"
+		}
+		let guid = link?.absoluteString ?? title ?? description ?? content ?? "lastResort"
+		return "\(feedURL.absoluteString)-\(guid)"
 	}
 
 	convenience init?(
