@@ -24,7 +24,13 @@ struct ViewFeedScreen: View {
 							Image(systemName: "circle.fill")
 								.foregroundColor(post.isRead ? .gray : .blue)
 
-							Text(post.title ?? "Untitled")
+							VStack(alignment: .leading) {
+								Text(post.title ?? "Untitled")
+
+								Text(post.prettyDate)
+									.font(.caption)
+									.foregroundColor(.gray)
+							}
 						}
 					})
 					.background(GeometryReader { geo -> Color in

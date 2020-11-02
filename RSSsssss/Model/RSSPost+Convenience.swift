@@ -88,3 +88,19 @@ extension RSSPost {
 			sourceFeed: parent)
 	}
 }
+
+// MARK: - ViewModel like stuff
+extension RSSPost {
+	static let relativeDateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.doesRelativeDateFormatting = true
+		formatter.dateStyle = .short
+		formatter.timeStyle = .short
+		return formatter
+	}()
+
+	var prettyDate: String {
+		guard let date = date else { return "??" }
+		return Self.relativeDateFormatter.string(from: date)
+	}
+}
